@@ -64,12 +64,12 @@ const Uncomplish = () => {
 
    const AddButton = <button style={{
       border: "none",
-      backgroundColor: "#e40e61",
-      height: "80px",
+      backgroundColor: "#f2faf9",
+      height: "60px",
       borderRadius: "50%",
-      fontSize: 60,
-      color: "#FFF",
-      width:  "80px"}}
+      fontSize: 50,
+      color: "#242424",
+      width:  "60px"}}
       onClick= {() => setVisibility(true)}
       children= "+"
    />;

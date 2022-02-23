@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import CustomPopup from './PopupTask';
+import FormTask from './FormTask';
+import Cards from './CardTask';
 /*import Modal from 'react-bootstrap/Modal'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';*/
@@ -53,6 +55,7 @@ const Uncomplish = () => {
       </Modal>;
    */
    
+   const [tasks, updateTasks] = useState([]);
 
    const [visibility, setVisibility] = useState(false);
    const popupCloseHandler = () => {
@@ -75,12 +78,15 @@ const Uncomplish = () => {
       onClose={popupCloseHandler}
       show={visibility}
       title="New Task">
-         <h1>pleaseeee</h1>
+         <FormTask 
+            addTodo={task => updateTasks([...tasks, task])} 
+            handleSubmit={popupCloseHandler}/>
       </CustomPopup>;
 
    return (
       <div>
          <h1>TODO</h1>
+         <Cards tasks={tasks}/>
          {AddButton}
          {AddTask}
       </div>

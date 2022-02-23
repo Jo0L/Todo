@@ -1,23 +1,36 @@
-import { useForm } from "react-hook-form";
-import popupStyles from "./custom-popup.module.css";
 
-const FormTask = (props) => {
-    const { register, handleSubmit, watch, errors } = useForm();
+//import { useForm } from "react-hook-form";
+
+const FormTask = ({addTodo, handleSubmit}) => {
+    //const { register, handleSubmit, watch, errors } = useForm();
+
+    const handleAdd = (event) => {
+      event.preventDefault();
+      const formData = event.target.data.value;
+      console.log("Form: ", formData);
+      addTodo({
+        data: formData,
+        createdOn: +new Date()
+      });
+      event.target.reset();
+      handleSubmit();
+    };
+        
     return (
-      <form>
-        <h2 className="label-wrapper">
-          <label htmlFor="new-todo-input" className="label__lg">
+      <form onSubmit={function eventHandler(event){handleAdd(event)}}>
+        <h4>
+          <label>
             What needs to be done?
           </label>
-        </h2>
+        </h4>
         <input
           type="text"
           id="new-todo-input"
-          className="input input__lg"
-          name="text"
+          name="data"
+          refs="inputTask"
           autoComplete="off"
         />
-        <button type="submit" className="btn btn__primary btn__lg">
+        <button type="submit">
           Add
         </button>
       </form>

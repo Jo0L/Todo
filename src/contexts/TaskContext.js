@@ -1,5 +1,5 @@
 import createContext from "react";
 
-const TaskContext = createContext();
+const TaskContext = createContext({cards: []});
 
 export default TaskContext;

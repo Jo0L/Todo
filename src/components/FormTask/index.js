@@ -8,10 +8,7 @@ const FormTask = ({addTodo, handleSubmit}) => {
       event.preventDefault();
       const formData = event.target.data.value;
       console.log("Form: ", formData);
-      addTodo({
-        data: formData,
-        createdOn: +new Date()
-      });
+      addTodo(formData);
       event.target.reset();
       handleSubmit();
     };

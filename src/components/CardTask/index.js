@@ -6,7 +6,7 @@ const Card = props => (
     <Fragment>
         <h5>{props.data}</h5>
       <div>
-        <small>{new Date(props.date).toUTCString()}</small>
+        <small>{props.date}</small>
       </div>
     </Fragment>
 );

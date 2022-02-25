@@ -1,59 +1,17 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import CustomPopup from './PopupTask';
 import FormTask from './FormTask';
 import Cards from './CardTask';
+import TaskProvider from '../contexts/TaskProvider';
 /*import Modal from 'react-bootstrap/Modal'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';*/
+class NumOfTasks extends Component{
+   static count = 0;
+}
 
 const Uncomplish = () => {
    
-
-
-   /*const isOpen = false;
-   const togglePopup = () => {
-      isOpen = !isOpen;
-   }
-   const AddTask = (
-      <Popup trigger={<button> Trigger</button>} position="right center" handleClose={togglePopup}>
-      <label>
-      Task:
-      <input type="text" name="task" hidden="insert your new task" />
-      </label>
-      <input type="submit" value="SUBMIT" />
-      </Popup>
-      );
-      
-   const AddTask = props => {
-      return (
-         <div className="popup-box">
-         <div className="box">
-         <span className="close-icon" onClick={props.handleClose}>bbbbx</span>
-         {props.content}
-         </div>
-      </div>);
-   };*/
-   
-   /*const [show, setShow] = useState(false);
-   const handleClose = () => setShow(false);
-   const handleOpen = () => setShow(true);
-
-   const Popup = <Modal 
-      show={show}
-      onHide={handleClose}
-      backdrop="static"
-      keyboard={false}>
-         <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
-         </Modal.Header>
-         <Modal.Body>
-            blahblahblah
-         </Modal.Body>
-         <Modal.Footer>
-            <button variant="primary">Understood</button>
-         </Modal.Footer>
-      </Modal>;
-   */
    
    const [tasks, updateTasks] = useState([]);
 
@@ -79,7 +37,7 @@ const Uncomplish = () => {
       show={visibility}
       title="New Task">
          <FormTask 
-            addTodo={task => updateTasks([...tasks, task])} 
+            addTodo={task => TaskProvider.appendTask = (++NumOfTasks.count, task)} 
             handleSubmit={popupCloseHandler}/>
       </CustomPopup>;
 
@@ -89,6 +47,7 @@ const Uncomplish = () => {
          <Cards tasks={tasks}/>
          {AddButton}
          {AddTask}
+         {TaskProvider.app}
       </div>
    );
 }

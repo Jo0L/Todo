@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const TaskList = () => {
+const TaskList = (isDone) => {
     
     const { tasks, sortedTasks, dispatch } = useContext(TaskContext)
     const classes = useStyles();
@@ -33,25 +33,26 @@ const TaskList = () => {
             }
         })
     };
+    const filteredTasks= tasks.filter(task => task.isDone === isDone);
     return (
         <List>
-            {sortedTasks.map((task) => {
+            {filteredTasks.map((tasks) => {
                 return (
-                    <ListItem key={task.id}
+                    <ListItem key={tasks.id}
                         role={undefined}
                         dense
                         button
                         onClick={() => {
-                            onChecked(task.id, !task.isDone)
+                            onChecked(tasks.id, !tasks.isDone)
                         }
                         }>
                         <IconButton color="primary">
                             {
-                                !task.isDone ? (<CropFreeIcon />) : (<LibraryAddCheckIcon />)
+                                !tasks.isDone ? (<CropFreeIcon />) : (<LibraryAddCheckIcon />)
                             }
                         </IconButton>
-                        <ListItemText primary={task.data}
-                            className={task.isDone ? classes.marked : ''} />
+                        <ListItemText primary={tasks.data}
+                            className={tasks.isDone ? classes.marked : ''} />
                         <ListItemSecondaryAction>
                             <IconButton
                                 edge="end"
@@ -59,7 +60,7 @@ const TaskList = () => {
                                 onClick={() => {
                                     dispatch({
                                         type: Action.REMOVE_TASK,
-                                        id: task.id
+                                        id: tasks.id
                                     })
                                 }}>
                                 <DeleteOutlineIcon />

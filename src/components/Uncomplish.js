@@ -37,7 +37,7 @@ const Uncomplish = () => {
          <h1>TODO</h1>
          {AddButton}
          {AddTask}
-         <TaskList></TaskList>
+         {TaskList(false)}
       </div>
    );
 }

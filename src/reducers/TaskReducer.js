@@ -11,11 +11,15 @@ export const TaskReducer = (state, action) => {
         }
         case Action.CHECK_TASK:
             let taskIndex = state.findIndex(task => task.id === action.task.id);
+            if (taskIndex === -1) {
+                return state
+            }
             state[taskIndex].isDone = action.task.isDone
             return state.filter(task => task.id !== action.id);
 
         case Action.REMOVE_TASK: {
-            return state.filter(task => task.id !== action.id)
+            let filteredTasks = state.filter(task => task.id !== action.id)
+            return filteredTasks ? filteredTasks : [];
         }
         default:
             return state;

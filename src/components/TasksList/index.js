@@ -67,6 +67,19 @@ const TaskList = (isDone) => {
                             secondary={tasks.date}
                             className={tasks.isDone ? classes.marked : ''} />
                         <ListItemSecondaryAction>
+                            <IconButton 
+                                    edge="end"
+                                    aria-label="comments"
+                                    onClick={() => {
+                                        dispatch({
+                                            type: Action.REMOVE_TASK,
+                                            id: tasks.id
+                                        })
+                                    }}>
+                                    <DeleteOutlineIcon />
+                            </IconButton>
+                        </ListItemSecondaryAction>
+                        <ListItemSecondaryAction>
                             <IconButton
                                 edge="end"
                                 aria-label="comments"

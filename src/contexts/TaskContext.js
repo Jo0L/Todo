@@ -1,5 +1,16 @@
-import createContext from "react";
+import React, { createContext, useReducer } from 'react';
+import { TaskReducer } from '../reducers/TaskReducer';
 
-const TaskContext = createContext({cards: []});
+export const TaskContext = createContext();
 
-export default TaskContext;
+const TaskProvider = (props) => {
+    const [tasks, dispatch] = useReducer(TaskReducer,[])
+    const sortedTasks = tasks.sort((t, f) =>  (f.isDone === t.isDone)? 0 : f.isDone? -1 : 1);
+    return (
+        <TaskContext.Provider value={{ tasks, sortedTasks, dispatch }}>
+            {props.children}
+        </TaskContext.Provider>
+    )
+}
+
+export default TaskProvider;

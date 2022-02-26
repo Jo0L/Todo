@@ -6,21 +6,23 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Done from './components/Done'
 import Uncomplish from './components/Uncomplish'
 import Navigation from './components/Navigation'
-import TaskProvider from './contexts/TaskProvider'
+import TaskProvider from './contexts/TaskContext';
 
 function App() {
   return(
-  <TaskProvider>
-    <BrowserRouter>
-      <>
-        <Navigation/>
-          <Routes>
-            <Route path="/" element={<Uncomplish/>} exact/>
-            <Route path="/done" element={<Done/>}/>
-          </Routes>
-      </>
-    </BrowserRouter>
-  </TaskProvider>);
+    <TaskProvider>
+      <BrowserRouter>
+        <>
+          <h1>TEST</h1>
+          <Navigation/>
+            <Routes>
+              <Route path="/" element={<Uncomplish/>} exact/>
+              <Route path="/done" element={<Done/>}/>
+            </Routes>
+        </>
+      </BrowserRouter>
+    </TaskProvider>
+  );
 }
 
 export default App;

@@ -1,20 +1,27 @@
+import { useContext } from "react";
+import { TaskContext } from "../../contexts/TaskContext";
+import { Action } from "../../reducers/TaskReducer";
+import { v1 as uuid } from "uuid";
 
-//import { useForm } from "react-hook-form";
-
-const FormTask = ({addTodo, handleSubmit}) => {
-    //const { register, handleSubmit, watch, errors } = useForm();
-
-    const handleAdd = (event) => {
+const FormTask = ({handleSubmit}) => {
+  const { dispatch } = useContext(TaskContext);
+    function handleAdd(event){
       event.preventDefault();
-      const formData = event.target.data.value;
-      console.log("Form: ", formData);
-      addTodo(formData);
+      dispatch({
+        type: Action.ADD_TASK,
+        task: {
+          id: uuid(),
+          data: event.target.data.value,
+          date: new Date().toUTCString(),
+          isDone: false
+        }
+      });
       event.target.reset();
       handleSubmit();
     };
         
     return (
-      <form onSubmit={function eventHandler(event){handleAdd(event)}}>
+      <form onSubmit={handleAdd}>
         <h4>
           <label>
             What needs to be done?
@@ -33,7 +40,5 @@ const FormTask = ({addTodo, handleSubmit}) => {
       </form>
     );
 };
-
-
 
 export default FormTask;

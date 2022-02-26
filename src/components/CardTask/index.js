@@ -1,6 +1,6 @@
 import CardStyle from './card-style.module.css';
-import TaskContext from '../../contexts/TaskContext';
 import { Fragment } from 'react';
+import { TaskContext } from '../../contexts/TaskContext';
 
 const Card = props => (
     <Fragment>

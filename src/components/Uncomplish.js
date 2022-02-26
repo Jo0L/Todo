@@ -1,20 +1,12 @@
 import React, { Component, useState } from 'react';
 import CustomPopup from './PopupTask';
 import FormTask from './FormTask';
-import Cards from './CardTask';
-import TaskProvider from '../contexts/TaskProvider';
-/*import Modal from 'react-bootstrap/Modal'
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';*/
-class NumOfTasks extends Component{
-   static count = 0;
-}
+import TaskList from './TasksList';
+
 
 const Uncomplish = () => {
    
    
-   const [tasks, updateTasks] = useState([]);
-
    const [visibility, setVisibility] = useState(false);
    const popupCloseHandler = () => {
       setVisibility(false);
@@ -37,17 +29,15 @@ const Uncomplish = () => {
       show={visibility}
       title="New Task">
          <FormTask 
-            addTodo={task => TaskProvider.appendTask = (++NumOfTasks.count, task)} 
             handleSubmit={popupCloseHandler}/>
       </CustomPopup>;
 
    return (
       <div>
          <h1>TODO</h1>
-         <Cards tasks={tasks}/>
          {AddButton}
          {AddTask}
-         {TaskProvider.app}
+         <TaskList></TaskList>
       </div>
    );
 }

@@ -51,7 +51,10 @@ const TaskList = (isDone) => {
                                 !tasks.isDone ? (<CropFreeIcon />) : (<LibraryAddCheckIcon />)
                             }
                         </IconButton>
-                        <ListItemText primary={tasks.data}
+                        <ListItemText
+                            secondaryTypographyProps={{style: {textShadow: 'none' }}}
+                            primary={tasks.data}
+                            secondary={tasks.date}
                             className={tasks.isDone ? classes.marked : ''} />
                         <ListItemSecondaryAction>
                             <IconButton

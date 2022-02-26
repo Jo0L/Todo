@@ -14,11 +14,12 @@ const Uncomplish = () => {
 
    const AddButton = <button style={{
       border: "none",
-      backgroundColor: "#f2faf9",
+      backgroundColor: "#3f51b5",
       height: "60px",
       borderRadius: "50%",
       fontSize: 50,
-      color: "#242424",
+      bottom: 0,
+      color: "#0f0f0f",
       width:  "60px"}}
       onClick= {() => setVisibility(true)}
       children= "+"
@@ -34,8 +35,15 @@ const Uncomplish = () => {
 
    return (
       <div>
-         <h1>TODO</h1>
-         {AddButton}
+         <div style={{display: "flex", flexDirection: "row"}}>
+            <h1 style={{height: "60px",
+                        textShadow: "-1px -1px 0 #091e94, \
+                                       1px -1px 0 #091e94, \
+                                       -1px 1px 0 #091e94, \
+                                       1px 1px 0 #091e94"}}>TODO:</h1> 
+            <p style={{width: "190px"}}/>
+            {AddButton}
+         </div>
          {AddTask}
          {TaskList(false)}
       </div>

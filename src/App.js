@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useCallback} from 'react';
-import { FullScreen, useFullScreenHandle as FullScreenHandle } from "react-full-screen";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Done from './components/Done'
 import Uncomplish from './components/Uncomplish'
@@ -12,14 +11,13 @@ function App() {
   return(
     <TaskProvider>
       <BrowserRouter>
-        <>
-          <h1>TEST</h1>
+        <div style={{margin: "auto", width: "50%", padding: "10px"}}>
           <Navigation/>
             <Routes>
               <Route path="/" element={<Uncomplish/>} exact/>
               <Route path="/done" element={<Done/>}/>
             </Routes>
-        </>
+        </div>
       </BrowserRouter>
     </TaskProvider>
   );

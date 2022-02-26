@@ -12,10 +12,19 @@ import LibraryAddCheckIcon from '@material-ui/icons/LibraryAddCheck';
 
 import { TaskContext } from '../../contexts/TaskContext';
 import { Action } from '../../reducers/TaskReducer';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     marked: {
         textDecoration: 'line-through'
+    },
+    item: {
+        zIndex: "3",
+        borderRadius: "0px 30px 30px 0px",
+        background: "#ececec",
+        '&:hover': {
+            background: "rgba(236, 236, 236, 0.8)",
+         }
     }
 }));
 
@@ -39,6 +48,7 @@ const TaskList = (isDone) => {
             {filteredTasks.map((tasks) => {
                 return (
                     <ListItem key={tasks.id}
+                        className={classes.item}
                         role={undefined}
                         dense
                         button
